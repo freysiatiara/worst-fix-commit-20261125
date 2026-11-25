@@ -19,6 +19,9 @@ def main():
             or "/output"
         )
         path = os.path.join(out_dir, "entry.txt")
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         f.write(ENTRY)
     os.chmod(path, 0o644)
